@@ -30,7 +30,6 @@ Diagnostics:
         bugprone-*,
         concurrency-*,
         cppcoreguidelines-*,
-        fuchsia-statically-constructed-objects,
         google-build-namespaces,
         google-global-names-in-headers,
         google-build-using-namespace,
@@ -62,6 +61,7 @@ Diagnostics:
         modernize-avoid-c-arrays,
         misc-non-private-member-variables-in-classes,
         cppcoreguidelines-non-private-member-variables-in-classes,
+        cppcoreguidelines-owning-memory
       ]
     CheckOptions:
       readability-identifier-naming.AggressiveDependentMemberLookup: true
