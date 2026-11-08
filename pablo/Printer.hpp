@@ -60,6 +60,11 @@ class Printer
     Stream* NOALIAS thisStream_ = nullptr;
 
   public:
+    /// Returns the stream inside.
+    NODISCARD PURE CONSTEXPR auto operator() () noexcept -> Stream& {
+        return *thisStream;
+    }
+
     // MARK: key methods
 
     /// Initialized with `text` and `std::cout`.
@@ -333,7 +338,7 @@ class Printer
     }
 
     /// Creates a Printer with `std::cout` as stream.
-    NODISCARD
+    NODISCARD CONSTEXPR
     static auto out() noexcept -> Printer<std::ostream> {
         return Printer<std::ostream>{std::cout};
     }
@@ -342,7 +347,7 @@ class Printer
 using PrinterOut = Printer<std::ostream>;
 
 /// The overload of `operator<<` for some Printer.
-inline auto operator<< (std::ostream& NOALIAS stream,
+CONSTEXPR inline auto operator<< (std::ostream& NOALIAS stream,
                         PrinterOut const & NOALIAS printer) noexcept -> std::ostream& {
     printer.show(stream);
     return stream;
